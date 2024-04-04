@@ -1,30 +1,22 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <limits>
-#include <cstddef>
-#include <stdexcept>
-#include <string_view>
-#include <string>
-#include <vector>
-#include <array>
 
-#include "App.hpp"
-#include "Fsm.hpp"
-#include "MainState.hpp"
-#include "LoadingState.hpp"
-
+#include "traindb/App.hpp"
+#include "traindb/Context.hpp"
+#include "traindb/screen/Key.hpp"
+#include "traindb/screen/Main.hpp"
+#include "traindb/screen/Loading.hpp"
 
 int main()
 {
-    App app{};
-    Fsm<AppState, App> stateMachine{ app };
+    using traindb::screen::Key;
 
-    LoadingState loadingState{};
-    MainState mainState{};
+    traindb::Context ctx{};
+    traindb::App app{ ctx };
 
-    stateMachine.AddState(AppState::Loading, loadingState);
-    stateMachine.AddState(AppState::Main, mainState);
+    traindb::screen::Main mainScreen{ };
+    traindb::screen::Loading loadScreen{ };
 
-    stateMachine.run(AppState::Loading, AppState::Exit);
+    app.AddScreen(Key::Loading, loadScreen);
+    app.AddScreen(Key::Main, mainScreen);
+
+    app.run(Key::Loading, Key::Exit);
 }
