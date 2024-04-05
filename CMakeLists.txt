@@ -10,6 +10,7 @@ set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(gcc_like_msvc "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 add_executable(TrainDB 
+    src/input.cpp
     src/traindb/Train.cpp
     src/traindb/screen/Main.cpp
     src/traindb/screen/Loading.cpp

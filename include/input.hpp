@@ -1,13 +1,10 @@
 #ifndef __INPUT__H__
 #define __INPUT__H__
 
-#include <stdexcept>
-#include <iostream>
-#include <fstream>
-#include <cstddef>
-#include <limits>
-#include <memory>
-#include <array>
+#include <stdexcept>    // runtime_error
+#include <iostream>     // istream ostream
+#include <memory>       // make_unique
+
 
 class InputError : public std::runtime_error
 {
@@ -39,34 +36,11 @@ void readData(std::istream& input, DataStorageType& s)
     }
 }
 
-template<std::size_t Size>
-std::size_t getSelection(
-    std::string_view prompt,
-    const std::array<std::string_view, Size>& items
-) noexcept(false)
-{
-    while (true) {
-        std::cout << prompt;
-        std::size_t index{ 1 };
-
-        for (auto&& item : items) {
-            std::cout << index << ") " << item << '\n';
-            index++;
-        } std::cout << "---\n> ";
-
-        if (int choice{ 0 }; std::cin >> choice && choice > 0 && choice < std::size(items)) {
-            return static_cast<std::size_t>(choice + 1);
-        }
-
-        if (std::cin.eof()) {
-            throw InputError{ "Прервано" };
-        }
-
-        std::cerr << "Не верный ввод. Попробуем еще раз.\n";
-
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-}
+std::string getValidatedInput(
+    std::istream& in,
+    std::ostream& out,
+    const std::string& validateRegex,
+    const std::string& failMessage
+);
 
 #endif  //!__INPUT__H__

@@ -11,8 +11,6 @@
 #include "traindb/screen/Base.hpp"
 #include "traindb/screen/Loading.hpp"
 
-
-
 namespace traindb::screen
 {
     Key Loading::execute(__attribute_maybe_unused__ Context& ctx)
