@@ -44,16 +44,20 @@ int main()
         "\n--- Перейти\n"
         "s) Поиск\n"
         "m) Главная\n"
-        "c) Управление\n";
+        "c) Управление\n"
+        "---\n";
 
     auto userChoice = getValidatedInput(
         std::cin,
         std::cout,
         "^[1-5?tndasmc]$",
-        "Неверный ввод. Повторите попытку.\n"
+        "! Неверный ввод. Повторите попытку.\n"
+        "---\n"
     );
 
-    std::cout << "Your choice: " << userChoice << '\n';
+    std::cout
+        << "Your choice: "
+        << userChoice << '\n';
 
     std::locale::global(localeOld);
     std::cout.imbue(localeOld);
