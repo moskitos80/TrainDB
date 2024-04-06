@@ -1,11 +1,11 @@
 #ifndef __LOADING__H__
 #define __LOADING__H__
 
-#include "traindb/screen/Key.hpp"
-#include "traindb/screen/Base.hpp"
+#include "traindb/view/Key.hpp"
+#include "traindb/view/Base.hpp"
 #include "traindb/Context.hpp"
 
-namespace traindb::screen
+namespace traindb::view
 {
     class Loading : public Base
     {

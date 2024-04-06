@@ -3,7 +3,9 @@
 
 #include <stdexcept>    // runtime_error
 #include <iostream>     // istream ostream
+#include <type_traits>  // make_unique
 #include <memory>       // make_unique
+#include <functional> 
 
 
 class InputError : public std::runtime_error
@@ -18,15 +20,21 @@ public:
     using std::runtime_error::runtime_error;
 };
 
-template<typename DataUnitType, typename DataStorageType>
-void readData(std::istream& input, DataStorageType& s)
-{
-    auto dataUnit{ std::make_unique<DataUnitType>() };
 
+template<typename DataUnitType, typename DataStorageType>
+std::enable_if_t<
+    std::is_same_v<decltype(std::declval<DataStorageType>().push_back(std::declval<DataUnitType>())), void>&&
+    std::is_same_v<decltype(std::declval<std::istream&>() >> std::declval<DataUnitType&>()), std::istream&>
+>
+readData(std::istream& input, DataStorageType& s, std::function<DataUnitType()> allocator)
+{
     int lineNo{ 1 };
-    while (input >> dataUnit.get()) {
-        s.push_back(std::move(dataUnit));
-        ++lineNo;
+    while (input) {
+        auto dataUnit{ allocator() };
+        if (input >> dataUnit) {
+            s.push_back(std::move(dataUnit));
+            ++lineNo;
+        }
     }
 
     if (!input.eof()) {

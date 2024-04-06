@@ -1,14 +1,13 @@
 #ifndef __KEY__H__
 #define __KEY__H__
 
-namespace traindb::screen
+namespace traindb::view
 {
     enum class Key {
         Loading,
         Main,
-        Sort,
-        Add,
-        Save,
+        Search,
+        Admin,
         Exit,
         Error,
     };

@@ -6,7 +6,7 @@
 #include <memory>
 #include <stdexcept>
 
-#include "Train.hpp"
+#include "traindb/persist/Train.hpp"
 
 namespace traindb
 {
@@ -14,6 +14,7 @@ namespace traindb
 
     struct Context
     {
+        std::string DbSavePath{};
         std::vector<std::string> Info{};
         std::vector<std::string> Error{};
         TrainStorage Db{};

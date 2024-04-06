@@ -2,22 +2,28 @@
 #include <stdexcept>
 #include <fstream>
 #include <memory>
+#include <string>
 
-#include "traindb/Train.hpp"
+#include "traindb/persist/Train.hpp"
 #include "input.hpp"
 
 #include "traindb/Context.hpp"
-#include "traindb/screen/Key.hpp"
-#include "traindb/screen/Base.hpp"
-#include "traindb/screen/Loading.hpp"
+#include "traindb/view/Key.hpp"
+#include "traindb/view/Base.hpp"
+#include "traindb/view/Loading.hpp"
 
-namespace traindb::screen
+namespace traindb::view
 {
-    Key Loading::execute(__attribute_maybe_unused__ Context& ctx)
+    Key Loading::execute(Context& ctx)
     {
+        if (ctx.DbSavePath == "") {
+            std::cerr << "Не предоставлен путь к файлу данных.\n";
+            return Key::Exit;
+        }
+
         std::cout << "Loading screen: Enter any sym and press enter: ";
-        char c;
-        std::cin >> c;
+        std::string line;
+        std::getline(std::cin, line, '\n');
         return Key::Main;
 /*
 

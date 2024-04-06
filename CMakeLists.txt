@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(TrainDB VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED On)
 set(CMAKE_CXX_EXTENSIONS Off)
 
@@ -11,9 +11,9 @@ set(gcc_like_msvc "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 add_executable(TrainDB 
     src/input.cpp
-    src/traindb/Train.cpp
-    src/traindb/screen/Main.cpp
-    src/traindb/screen/Loading.cpp
+    src/traindb/persist/Train.cpp
+    src/traindb/view/Main.cpp
+    src/traindb/view/Loading.cpp
     src/main.cpp
 )
 

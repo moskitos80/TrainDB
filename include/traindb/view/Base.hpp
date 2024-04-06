@@ -2,9 +2,9 @@
 #define __BASE__H__
 
 #include "traindb/Context.hpp"
-#include "traindb/screen/Key.hpp"
+#include "traindb/view/Key.hpp"
 
-namespace traindb::screen
+namespace traindb::view
 {
     class Base
     {

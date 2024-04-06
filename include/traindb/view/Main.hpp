@@ -1,11 +1,11 @@
 #ifndef __MAIN__H__
 #define __MAIN__H__
 
-#include "traindb/screen/Key.hpp"
-#include "traindb/screen/Base.hpp"
+#include "traindb/view/Key.hpp"
+#include "traindb/view/Base.hpp"
 #include "traindb/Context.hpp"
 
-namespace traindb::screen
+namespace traindb::view
 {
     class Main : public Base
     {

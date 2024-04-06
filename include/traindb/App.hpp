@@ -4,15 +4,15 @@
 #include <functional>
 #include <map>
 
-#include "traindb/screen/Key.hpp"
-#include "traindb/screen/Base.hpp"
+#include "traindb/view/Key.hpp"
+#include "traindb/view/Base.hpp"
 #include "traindb/Context.hpp"
 
 namespace traindb
 {
     using AppContext = Context;
-    using ScreenKey = screen::Key;
-    using Screen = screen::Base;
+    using ScreenKey = view::Key;
+    using Screen = view::Base;
 
     class App
     {
