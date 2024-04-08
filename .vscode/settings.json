@@ -83,7 +83,8 @@
     "locale": "cpp",
     "strstream": "cpp",
     "regex": "cpp",
-    "cassert": "cpp"
+    "cassert": "cpp",
+    "ranges": "cpp"
   },
   "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
 }
